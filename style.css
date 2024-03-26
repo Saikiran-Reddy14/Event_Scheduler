@@ -90,7 +90,6 @@ button:hover {
   border-radius: 10px;
   font-size: 20px;
   box-shadow: 0 0 10px #111;
-
   margin: 20px;
 }
 
@@ -258,4 +257,12 @@ form {
       rgba(52, 52, 52, 0.02) 100%
     ),
     linear-gradient(90deg, #ffffff, #ffffff);
+}
+
+/* Responsive */
+@media (min-width: 320px) and (max-width: 425px) {
+  .schedule {
+    padding: 20px;
+    width: 90%;
+  }
 }
