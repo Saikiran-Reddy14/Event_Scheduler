@@ -99,5 +99,5 @@ function deleteEvent(index) {
   // Display the updated schedule
   displaySchedule();
 }
-
+// displaying the old events on page load
 displaySchedule();
