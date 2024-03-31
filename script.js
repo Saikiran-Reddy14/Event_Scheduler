@@ -36,6 +36,7 @@ function displaySchedule() {
               <p class="eve-date">Date: ${event.date}</p>
               <p class="eve-time">Time: ${event.time}</p>
               <p class="eve-desc">Description: ${event.description}</p>
+              <button class="edit" onclick="editEvent(${index})">Edit</button>
               <button onclick="deleteEvent(${index})">Delete</button>
               <hr>
             `;
@@ -99,5 +100,86 @@ function deleteEvent(index) {
   // Display the updated schedule
   displaySchedule();
 }
+
+// Function to edit event
+function editEvent(index) {
+  const events = JSON.parse(localStorage.getItem("events")) || [];
+  const eventDiv = document.querySelector(
+    `.schedule .event:nth-child(${index + 1})`
+  );
+  const edibtn = document.getElementsByClassName("edit");
+  edibtn[0].style.display = "none";
+  console.log(edibtn);
+  const delbtn = document.getElementsByClassName("delete");
+  delbtn[0].style.display = "none";
+
+  // Get the existing event details
+  const eventNameElement = eventDiv.querySelector(".eve-name");
+  const eventDateElement = eventDiv.querySelector(".eve-date");
+  const eventTimeElement = eventDiv.querySelector(".eve-time");
+  const eventDescElement = eventDiv.querySelector(".eve-desc");
+
+  // Create input fields to replace the event details
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.value = eventNameElement.textContent;
+  console.log(eventDateElement.textContent);
+  const dateInput = document.createElement("input");
+  dateInput.type = "date";
+  dateInput.value = eventDateElement.textContent.split(": ")[1];
+
+  const timeInput = document.createElement("input");
+  timeInput.type = "time";
+  timeInput.value = eventTimeElement.textContent.split(": ")[1];
+
+  const descInput = document.createElement("textarea");
+  descInput.textContent = eventDescElement.textContent.split(": ")[1];
+
+  // Replace event details with input fields
+  eventNameElement.textContent = "";
+  eventNameElement.appendChild(nameInput);
+
+  eventDateElement.textContent = "";
+  eventDateElement.appendChild(dateInput);
+
+  eventTimeElement.textContent = "";
+  eventTimeElement.appendChild(timeInput);
+
+  eventDescElement.textContent = "";
+  eventDescElement.appendChild(descInput);
+
+  // save button
+  const saveButton = document.createElement("button");
+  saveButton.setAttribute("class", "save");
+  saveButton.textContent = "Save";
+  saveButton.addEventListener("click", () => saveEditedEvent(index, events));
+  eventDiv.appendChild(saveButton);
+}
+
+// Function to save edited event
+function saveEditedEvent(index, events) {
+  const eventDiv = document.querySelector(
+    `.schedule .event:nth-child(${index + 1})`
+  );
+  const newName = eventDiv.querySelector(".eve-name input").value;
+  const newDate = eventDiv.querySelector(".eve-date input").value;
+  const newTime = eventDiv.querySelector(".eve-time input").value;
+  const newDesc = eventDiv.querySelector(".eve-desc textarea").value;
+
+  // Update the event in the events array
+  events[index] = {
+    name: newName,
+    date: newDate,
+    time: newTime,
+    description: newDesc,
+  };
+
+  // Update localStorage
+  localStorage.setItem("events", JSON.stringify(events));
+
+  // Refresh the displayed schedule
+  displaySchedule();
+}
+
 // displaying the old events on page load
 displaySchedule();
