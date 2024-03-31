@@ -37,7 +37,7 @@ function displaySchedule() {
               <p class="eve-time">Time: ${event.time}</p>
               <p class="eve-desc">Description: ${event.description}</p>
               <button class="edit" onclick="editEvent(${index})">Edit</button>
-              <button onclick="deleteEvent(${index})">Delete</button>
+              <button class="delete"  onclick="deleteEvent(${index})">Delete</button>
               <hr>
             `;
       scheduleDiv.appendChild(eventDiv);
