@@ -37,7 +37,7 @@ function displaySchedule() {
               <p class="eve-time">Time: ${event.time}</p>
               <p class="eve-desc">Description: ${event.description}</p>
               <button class="edit" onclick="editEvent(${index})">Edit</button>
-              <button class="delete"  onclick="deleteEvent(${index})">Delete</button>
+              <button class="delete" onclick="deleteEvent(${index})">Delete</button>
               <hr>
             `;
       scheduleDiv.appendChild(eventDiv);
@@ -113,13 +113,13 @@ function editEvent(index) {
   const delbtn = document.getElementsByClassName("delete");
   delbtn[0].style.display = "none";
 
-  // Get the existing event details
+  // existing event details
   const eventNameElement = eventDiv.querySelector(".eve-name");
   const eventDateElement = eventDiv.querySelector(".eve-date");
   const eventTimeElement = eventDiv.querySelector(".eve-time");
   const eventDescElement = eventDiv.querySelector(".eve-desc");
 
-  // Create input fields to replace the event details
+  // input fields to replace the event details
   const nameInput = document.createElement("input");
   nameInput.type = "text";
   nameInput.value = eventNameElement.textContent;
@@ -177,9 +177,7 @@ function saveEditedEvent(index, events) {
   // Update localStorage
   localStorage.setItem("events", JSON.stringify(events));
 
-  // Refresh the displayed schedule
   displaySchedule();
 }
 
-// displaying the old events on page load
 displaySchedule();
