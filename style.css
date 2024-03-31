@@ -96,32 +96,68 @@ button:hover {
 .event {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 10px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.event button {
+.delete {
   color: #ffffff;
   background-color: #007bff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  width: fit-content;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  transition: all 0.3s;
+  width: 150px;
+  text-transform: uppercase;
 }
 
-.event button:hover {
-  background-color: #0056b3;
-  transition: background-color 0.3s;
+.delete:hover {
+  background-color: #70e000;
+  transition: all 0.3s;
+  color: black;
 }
 
 .event p {
-  word-wrap: break-word;
+  word-break: break-all;
 }
 
+.edit {
+  width: 150px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ff006e;
+  color: whitesmoke;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+
+.edit:hover {
+  background-color: #9bf6ff;
+  color: black;
+  transition: all 0.3s;
+}
+
+.save {
+  width: 150px;
+  background-color: #1b4965;
+  color: whitesmoke;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.event input,
+.event textarea {
+  width: 176px;
+}
 hr {
   margin: 15px 0;
 }
@@ -260,7 +296,7 @@ form {
 }
 
 /* Responsive */
-@media (min-width: 320px) and (max-width: 425px) {
+@media (max-width: 425px) {
   .schedule {
     padding: 20px;
     width: 90%;
