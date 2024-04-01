@@ -108,10 +108,10 @@ function editEvent(index) {
     `.schedule .event:nth-child(${index + 1})`
   );
   const edibtn = document.getElementsByClassName("edit");
-  edibtn[0].style.display = "none";
+  edibtn[index].style.display = "none";
   console.log(edibtn);
   const delbtn = document.getElementsByClassName("delete");
-  delbtn[0].style.display = "none";
+  delbtn[index].style.display = "none";
 
   // existing event details
   const eventNameElement = eventDiv.querySelector(".eve-name");
