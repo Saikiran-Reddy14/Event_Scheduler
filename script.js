@@ -166,7 +166,7 @@ function saveEditedEvent(index, events) {
   const newTime = eventDiv.querySelector(".eve-time input").value;
   const newDesc = eventDiv.querySelector(".eve-desc textarea").value;
 
-  // Update the event in the events array
+  // Updating the event in the events array
   events[index] = {
     name: newName,
     date: newDate,
@@ -174,7 +174,7 @@ function saveEditedEvent(index, events) {
     description: newDesc,
   };
 
-  // Update localStorage
+  // Updating localStorage
   localStorage.setItem("events", JSON.stringify(events));
 
   displaySchedule();
