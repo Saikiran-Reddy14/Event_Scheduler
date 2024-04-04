@@ -36,11 +36,13 @@ function displaySchedule() {
               <p class="eve-date">Date: ${event.date}</p>
               <p class="eve-time">Time: ${event.time}</p>
               <p class="eve-desc">Description: ${event.description}</p>
-              <button class="edit" onclick="editEvent(${index})">Edit</button>
-              <button class="delete" onclick="deleteEvent(${index})">Delete</button>
-              <hr>
+              <button type="button" class="edit btn btn-success" onclick="editEvent(${index})">Edit</button>
+              <button type="button" class="delete btn btn-danger" onclick="deleteEvent(${index})">Delete</button>
             `;
       scheduleDiv.appendChild(eventDiv);
+
+      const hr = document.createElement("hr");
+      scheduleDiv.appendChild(hr);
       if (current24hr == event.time)
         alert(
           (
@@ -108,10 +110,10 @@ function editEvent(index) {
     `.schedule .event:nth-child(${index + 1})`
   );
   const edibtn = document.getElementsByClassName("edit");
-  edibtn[index].style.display = "none";
+  edibtn[0].style.display = "none";
   console.log(edibtn);
   const delbtn = document.getElementsByClassName("delete");
-  delbtn[index].style.display = "none";
+  delbtn[0].style.display = "none";
 
   // existing event details
   const eventNameElement = eventDiv.querySelector(".eve-name");
@@ -166,7 +168,7 @@ function saveEditedEvent(index, events) {
   const newTime = eventDiv.querySelector(".eve-time input").value;
   const newDesc = eventDiv.querySelector(".eve-desc textarea").value;
 
-  // Updating the event in the events array
+  // Update the event in the events array
   events[index] = {
     name: newName,
     date: newDate,
@@ -174,7 +176,7 @@ function saveEditedEvent(index, events) {
     description: newDesc,
   };
 
-  // Updating localStorage
+  // Update localStorage
   localStorage.setItem("events", JSON.stringify(events));
 
   displaySchedule();
