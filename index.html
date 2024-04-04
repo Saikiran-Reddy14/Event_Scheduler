@@ -11,31 +11,58 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
   </head>
   <body>
-    <form id="add-event-form">
-      <h2>Event Scheduler</h2>
-      <label for="event-name">Event Name:</label>
-      <input type="text" id="event-name" required autocomplete="off" />
+    <div class="container">
+      <form id="add-event-form">
+        <h2 class="mt-4">Event Scheduler</h2>
+        <div class="form-group">
+          <label for="event-name">Event Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="event-name"
+            required
+            autocomplete="off"
+          />
+        </div>
 
-      <label for="event-date">Date:</label>
-      <input
-        type="date"
-        id="event-date"
-        min="2000-01-01"
-        max="2099-12-31"
-        required
-      />
-      <label for="event-time">Time:</label>
-      <input type="time" id="event-time" required />
+        <div class="form-group">
+          <label for="event-date">Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="event-date"
+            min="2000-01-01"
+            max="2099-12-31"
+            required
+          />
+        </div>
 
-      <label for="event-description">Description:</label>
-      <textarea id="event-description" autocomplete="off" required></textarea>
+        <div class="form-group">
+          <label for="event-time">Time:</label>
+          <input type="time" class="form-control" id="event-time" required />
+        </div>
 
-      <button type="submit">Add Event</button>
-    </form>
+        <div class="form-group">
+          <label for="event-description">Description:</label>
+          <textarea
+            class="form-control"
+            id="event-description"
+            required
+          ></textarea>
+        </div>
 
-    <div class="schedule"></div>
+        <button type="submit" class="btn btn-primary">Add Event</button>
+      </form>
+
+      <div class="schedule mt-4 mb-3"></div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
