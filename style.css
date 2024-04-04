@@ -7,8 +7,7 @@
 
 body {
   height: 100%;
-  width: 98w;
-  padding: 0;
+  width: 100%;
   background-image: linear-gradient(
     to right top,
     #3ccad2,
@@ -28,6 +27,17 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
   gap: 20px;
 }
 
@@ -40,7 +50,6 @@ form {
   display: flex;
   flex-direction: column;
   width: fit-content;
-  gap: 10px;
   flex-wrap: wrap;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -50,29 +59,19 @@ form {
   box-shadow: 0 0 10px #111;
 }
 
-input {
+input,
+textarea {
   padding: 5px 10px;
   outline: none;
 }
 
-input::placeholder,
-textarea::placeholder {
-  text-align: center;
-  opacity: 0.5;
-}
-
-form button {
+button {
   border: none;
   background-color: #007bff;
   color: #fff;
   padding: 10px 5px;
   cursor: pointer;
   border-radius: 20px;
-}
-
-textarea {
-  padding: 5px;
-  outline: none;
 }
 
 button:hover {
@@ -82,7 +81,6 @@ button:hover {
 
 .schedule {
   border: 1px solid transparent;
-  /* min-height: 393px; */
   height: fit-content;
   padding: 50px;
   width: 75%;
@@ -90,7 +88,6 @@ button:hover {
   border-radius: 10px;
   font-size: 20px;
   box-shadow: 0 0 10px #111;
-  margin: 20px;
 }
 
 .event {
@@ -103,44 +100,16 @@ button:hover {
   align-items: center;
 }
 
-.delete {
-  color: #ffffff;
-  background-color: #007bff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s;
-  width: 150px;
+.delete,
+.edit {
+  width: 100px;
   text-transform: uppercase;
-}
-
-.delete:hover {
-  background-color: #70e000;
-  transition: all 0.3s;
-  color: black;
 }
 
 .event p {
-  word-break: break-all;
-}
-
-.edit {
-  width: 150px;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #ff006e;
-  color: whitesmoke;
-  transition: all 0.3s;
-  text-transform: uppercase;
-}
-
-.edit:hover {
-  background-color: #9bf6ff;
-  color: black;
-  transition: all 0.3s;
+  word-break: break-word;
+  max-width: 100%;
+  margin: 0;
 }
 
 .save {
@@ -156,10 +125,14 @@ button:hover {
 
 .event input,
 .event textarea {
-  width: 176px;
+  width: 200px;
 }
+
 hr {
   margin: 15px 0;
+  border: none;
+  height: 1px;
+  background-color: #555;
 }
 
 .none {
@@ -295,7 +268,7 @@ form {
     linear-gradient(90deg, #ffffff, #ffffff);
 }
 
-/* Responsive */
+/* Responsive for smaller screens */
 @media (max-width: 425px) {
   .schedule {
     padding: 20px;
