@@ -83,11 +83,26 @@ function addEvent(name, date, time, description) {
   // Getting existing events or initialize an empty array
   let events = JSON.parse(localStorage.getItem("events")) || [];
 
+  // Check for conflicting events
+  const conflictingEvent = events.find(
+    (event) => event.date === date && event.time === time
+  );
+
+  if (conflictingEvent) {
+    alert(
+      "There is already an event scheduled at this date and time. Please choose a different date or time."
+    );
+    return; // Don't proceed further
+  }
+
   // Adding new event to the array
   events.push({ name, date, time, description });
 
   // Saving updated events array to localStorage
   localStorage.setItem("events", JSON.stringify(events));
+
+  // Display the updated schedule
+  displaySchedule();
 }
 
 // Function to delete event
